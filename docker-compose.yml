@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  led-control:
+    container_name: led-control
+    image: ${DOCKER_REGISTRY-}led-control
+    privileged: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - "9191:9191"
+    devices:
+      - /dev/gpiomem
+      - /dev/mem
